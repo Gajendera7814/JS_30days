@@ -94,3 +94,81 @@
         - Primitive types create a new value when you try to modify them, meaning they can’t be changed in place.
         - Non-Primitive types allow changes to their internal structure or values directly.
 */
+
+
+/* Copying a primitive */
+
+    let m = 10;
+    m = m + 5;  // m is now 15, but the original 10 remains unchanged
+    console.log(m); /* Output - 15 */
+
+
+    const answer = 42
+    answer.foo = "bar";
+    console.log(answer); /* Output - 42 */
+    console.log(answer.foo); /* Output - undefined */
+
+
+    let a = 13;
+    let b = a;           
+    b = 37;            
+    console.log(a); /* Output - 37,  assign 13 to a, copy the value of a to b, assign 37 to b */
+
+
+    let q = 1;
+    let r = q;
+    q = 2;
+    console.log(r === 1); /* Output - true */
+
+
+    let name = 'John';
+    name.alias = 'Knight';
+    console.log(name.alias); /* Output - undefined */
+
+    /*
+        Explanation - 'alias' property to the 'name' primitive value. But when we access the 'alias' property via the 
+        'name' primitive value, it returns undefined.
+    */
+
+
+    let age = 25;
+    let newAge = age;
+    
+    newAge = newAge + 1;
+    console.log(age, newAge); /* Output - 25, 26 */
+
+
+/* Copying a reference */
+
+    var x = { z: 13 }  // assign the reference of x new object to x
+    var y = x          // copy the reference of the object inside x to new variable y
+    y.z = 37           // modify the contents of the object y refers to
+    console.log(x)     // => { z: 37 }
+
+
+    let person = {
+        name: 'John',
+        age: 25,
+    };
+      
+    let member = person;
+      
+    member.age = 26;
+      
+    console.log(person); /* Output:- { name: 'John', age: 26 } */
+    console.log(member); /* Output:- { name: 'John', age: 26 } */
+
+
+/*
+    Summary -
+
+    > Javascript has two types of values: primitive and reference values.
+    
+    > You can add, change, or delete properties to a reference value, whereas you cannot do it with a primitive value.
+    
+    > Copying a primitive value from one variable to another creates a separate value copy, meaning that changing the 
+      value in one variable does not affect the other.
+
+    > Copying a reference from one variable to another creates a reference so that two variables refer to the same object. 
+      This means that changing the object via one variable reflects in another variable.
+*/
