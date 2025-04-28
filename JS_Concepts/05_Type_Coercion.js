@@ -17,33 +17,55 @@ console.log(77 === '77'); // Output: false
 
 console.log("cat" === "dog"); // Output: false
 
-console.log(false === 0); // Output: false
-
 
 /* Falsy Value Comparison */
-console.log(false == 0); // Output: true
-console.log(0 == ""); // Output: true
-console.log("" == false); // Output: true
+
+/*
+    === --→ No type coercion --→ must match type + value.
+
+    == --→ Automatic type coercion --→ JavaScript converts types to numbers, then compares.
+
+    false --→ 0
+
+    true --→ 1
+
+    "" --→ 0
+
+    "non-empty string" --→ NaN
+
+    null == undefined --→ true (but not with ===)
+*/
+
+console.log(false == 0); // true  ---> false is converted to 0, Then 0 == 0 --→ true
+console.log("" == 0); // true  ---> "" (empty string) is converted to 0, Then 0 == 0 --→ true
+console.log("" == false); // true  ---> "" is converted to 0, false is converted to 0, Then 0 == 0 --→ true
+console.log([] == false); // true  ---> because the array was converted to a boolean and an empty array sort of represents false in the realm of arrays I guess)
 
 
-console.log(null == undefined); // Output: true
-console.log(undefined == undefined); // Output: true
-console.log(null == undefined); // Output: true
+console.log(false === 0); // false  --→ Boolean, 0 --→ Number, Types are different --→ false
+console.log("" === false); // false  ---> "" is string, false is boolean --→ types differ --→ false
+console.log("" === 0); // false  ---> "" is string, 0 is number --→ types differ --→ false
+console.log('[]' === false); // false  ---> '[]' -→ Type is string, false -→ Type is boolean ---> types differ --→ false
 
 
-console.log(null === undefined); // Output: false
-console.log(undefined === undefined); // Output: true
-console.log(null === undefined); // Output: false
+console.log(null == undefined); // true  ---> null is an object and undefined is its own type, JavaScript forces them to be equal under ==.
+console.log(undefined == undefined); // true  ---> Both values are already of type undefined, Same type + same value = true in both == and ===.
+console.log(null == null); // true  ---> If the types are the same --→ no coercion is needed, If values are the same --→ returns true.
 
 
-console.log(NaN == null); // Output: false
-console.log(NaN == undefined); // Output: false
-console.log(NaN == NaN); // Output: false
+console.log(null === undefined); // false  ---> null -→ type: object and undefined -→ type: undefined, Different types -→ false
+console.log(undefined === undefined); // true  ---> Both sides are type undefined, ame type and value --→ true
+console.log(null === null); // true ---> null === null -→ also true, Because types and values both match.
 
 
-console.log(NaN === null); // Output: false
-console.log(NaN === undefined); // Output: false
-console.log(NaN === NaN); // Output: false
+console.log(NaN == null); // false  ---> NaN == null → false (different types and NaN is never loosely equal to null) ---> NaN is a special Number value representing "Not a Number.",  null is an object representing "no value."
+console.log(NaN == undefined); // false  ---> NaN is never equal to any value, not even undefined.
+console.log(NaN == NaN); // false  ---> NaN is never equal to anything, including itself.
+
+
+console.log(NaN === null); // false  ---> Type of NaN = Number, Type of null = Object, Different types -→ false.
+console.log(NaN === undefined); // false  ---> NaN (Number) vs undefined (Undefined), Different types -→ false.
+console.log(NaN === NaN); // false  ---> NaN is not equal to NaN by JavaScript definition.
 
 
 const objects = {};
@@ -51,26 +73,9 @@ console.log(objects === '{}'); // false (because objects are compared by referen
 
 console.log(objects === objects); // true (because the object is referentially equal to itself)
 
-
-console.log(0 == false); // true (because the boolean was converted to a number)
-
-console.log(0 == null); // false (because absent values are not considered equal to non-absent values)
-
 console.log({} == {}); // false (because objects are compared by reference)
 
-console.log(0 == undefined); // false (because absent values are not considered equal to non-absent values)
-
-console.log(null == undefined); // true (because both are absent values)
-
-console.log(undefined == null); // true (because both are absent values)
-
 console.log('hello!' == false); // false
-
-console.log('' == false); // true (because the string was converted to a boolean and an empty string sort of represents false in the realm of strings I guess)
-
-console.log([] == false); // true (because the array was converted to a boolean and an empty array sort of represents false in the realm of arrays I guess)
-
-
 
 
 /*
@@ -127,22 +132,28 @@ console.log([] == false); // true (because the array was converted to a boolean 
 
 */
 
-console.log(true && "dog"); // "dog"
-console.log(false && "dog"); // false
-console.log([] && "cat"); // "cat" (empty array is truthy)
-console.log(null && "cat"); // null
+console.log(true && "dog"); // "dog"  ---> true - it's a truthy value,  "dog" — it's also a truthy value (non-empty string)  --> Since both operands are truthy, the && operator returns the last operand, which is "dog".
+console.log(false && "dog"); // false  ---> false — it's a falsy value,  "dog" — this is a truthy value  ---> Since the first operand is falsy (false), the && operator immediately returns the first falsy value, which is false.
+console.log([] && "cat"); // "cat"  ---> [] (empty array) — it's a truthy value,  "cat" — it's also a truthy value (non-empty string)  ---> Since both operands are truthy, the && operator returns the last operand, which is "cat".
+console.log(null && "cat"); // null  ---> null — it's a falsy value,  "cat" — it's a truthy value  ---> Since the first operand is falsy (null), the && operator immediately returns the first falsy value, which is null.
+console.log(1 && 2); // 2  --->  1 - it's a truthy value (non-zero number), 2 - it's a truthy value (non-zero number) --> Since both operands are truthy, the && operator returns the last operand, which is 2.
 
 
 /*<--------------------------------- 2. Logical OR (||) ---------------------------------->
 
     Returns the first truthy operand or the last falsy operand -
 
+    Truthy values are values that are considered "true" in a Boolean context. Examples: "non-empty string", 42, [], {}.
+
+    Falsy values are values that are considered "false" in a Boolean context. Examples: false, 0, "" (empty string), null, undefined, NaN.
+
 */
 
-console.log(false || "dog"); // "dog"
-console.log(null || 42); // 42
-console.log(0 || ""); // ""
-console.log("cat" || "dog"); // "cat"
+console.log(false || "dog"); // "dog"  ---> false — it's a falsy value,  "dog" — it's a truthy value (non-empty string)  --> || operator returns the first truthy value it encounters. So, it returns "dog".
+console.log(null || 42); // 42  ---> null - it's a falsy value,  42 - it's a truthy value (non-zero number)  --> || operator returns the first truthy value, which is 42.
+console.log(0 || ""); // ""  --->  0 - it's a falsy value,  "" (empty string) - it's a falsy value  --> Since both operands are falsy, the || operator returns the last value, which is "".
+console.log("cat" || "dog"); // "cat"  --->  "cat" - it's a truthy value (non-empty string), "cat" is truthy, the || operator immediately returns the first truthy value without even checking the second operand.
+console.log(1 || 2); // 1  ---> 1 - it's a truthy value (non-zero number),  2 - it's a truthy value (non-zero number)  ---> the || operator immediately returns the first truthy value without even checking the second operand.
 
 
 /* <--------------------------------- 3. Logical NOT (!) --------------------------------->
@@ -164,12 +175,11 @@ console.log(!!"hello"); // true
 console.log(!![]); // true
 
 
-console.log(undefined && 0); // undefined --> (First operand is falsy, so it short-circuits)
+console.log(undefined && 0); // undefined  ---> undefined — it's a falsy value,  0 — it's a falsy value  ---> Since the first operand is falsy (undefined), the && operator immediately returns the first falsy value, which is undefined.
 console.log(undefined || 0); // 0 --> (Both operands are falsy; returns the last operand)
 console.log(undefined || null); // null --> (Both are falsy; returns the last operand)
 console.log(undefined && null); // undefined --> (Short-circuits as the first operand is falsy)
-console.log(1 && 2); // 2 --> (First operand is truthy; evaluates and returns the second operand)
-console.log(1 || 2); // 1 --> (First operand is truthy; short-circuits and returns it)
+
 console.log(false || undefined); // undefined --> (Both are falsy; returns the last operand)
 console.log(true || undefined); // true --> (First operand is truthy; short-circuits and returns it)
 console.log(undefined || true); // true --> (Second operand is truthy; returns it)
@@ -181,27 +191,13 @@ console.log(null && true); // null --> (Short-circuits as the first operand is f
 console.log(null && false); // null --> (Short-circuits as the first operand is falsy)
 console.log(true && null); // null --> (First operand is truthy; evaluates and returns the second operand)
 console.log(false && null); // false --> (Short-circuits as the first operand is falsy)
-console.log("[]" === false); // false --> (Strict equality does not perform type coercion)
+
 console.log(1 == '1'); // true --> (Loose equality performs type coercion)
 console.log(1 === '1'); // false --> (Strict equality checks value and type)
 console.log(1 == [1]); // true --> (Array [1] is coerced to the primitive 1)
 console.log('1' == [1]); // true --> (Array [1] is coerced to the string '1')
-console.log(false == 0); // true --> (Loose equality coerces false to 0)
-console.log(false === 0); // false --> (Strict equality checks value and type)
-console.log(0 == ''); // true --> (Loose equality coerces both to 0)
-console.log(0 === ''); // false --> (Strict equality checks value and type)
-console.log(null == undefined); // true --> (Loose equality treats them as equivalent)
-console.log(null === undefined); // false --> (Strict equality checks value and type)
-console.log([] == false); // true --> (Empty array coerces to "", which is falsy and equal to false)
 console.log(!![0] == true); // true --> ([0] is a non-empty array, hence truthy)
 console.log(!![0] === true); // true --> (Both sides are boolean true)
-console.log(false == null); // false --> (null only loosely equals undefined)
-console.log(false === null); // false --> (Strict equality checks value and type)
-console.log(NaN == NaN); // false --> (NaN is not equal to itself per JavaScript rules)
-console.log(NaN === NaN); // false --> (Same reason as above, strict equality does not change this behavior)
-console.log([] == true); // false --> (Empty array coerces to "", which is not equal to true)
-console.log(true && "dog"); // "dog" --> (First operand is truthy; returns the second operand)
-console.log([] && "dog"); // "dog" --> (Empty array is truthy; returns the second operand)
 
 
 console.log(!!{}); // true (empty objects are truthy)
@@ -221,18 +217,6 @@ console.log([] && {}); // {} (arr is truthy, evaluates and returns obj)
 console.log(!{} && ![]); // false (both obj and arr are truthy)
 console.log("0" && 42); // 42 (The string "0" is truthy, so the second operand is returned.)
 console.log(false || null || "hello"); // "hello" (The first truthy value is returned.)
-
-
-console.log(0 === 0); // Output: true
-console.log('hello!' === 'hello!'); // Output: true
-console.log(null === null); // Output: true
-console.log(undefined === undefined); // Output: true
-
-
-console.log(0 === 5); // Output: false (same types, but different values)
-console.log(0 === '0'); // Output: false (different types)
-console.log(0 === 'hello!'); // Output: false (different types)
-console.log(null === undefined); // Output: false (different types)
 
 
 const object = {};
