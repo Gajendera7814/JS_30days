@@ -2,7 +2,7 @@
 /*
     Difference Between undefined and not defined in JavaScript -  
 
-    Both undefined and not defined are related to variables in JavaScript, but they mean different things.  
+    > Both undefined and not defined are related to variables in JavaScript, but they mean different things.  
 
     1. undefined
 
