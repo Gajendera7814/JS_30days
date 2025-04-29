@@ -192,6 +192,7 @@ console.log(null && false); // null --> (Short-circuits as the first operand is 
 console.log(true && null); // null --> (First operand is truthy; evaluates and returns the second operand)
 console.log(false && null); // false --> (Short-circuits as the first operand is falsy)
 
+
 console.log(1 == '1'); // true --> (Loose equality performs type coercion)
 console.log(1 === '1'); // false --> (Strict equality checks value and type)
 console.log(1 == [1]); // true --> (Array [1] is coerced to the primitive 1)
