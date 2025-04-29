@@ -138,6 +138,19 @@
     console.log(age, newAge); /* Output - 25, 26 */
 
 
+    let X = 10;
+    X = X + 5;  // Output: -> x is now 15, but the original 10 remains unchanged
+    console.log(X); // Output: -> 15
+
+    // Here, when x is updated, a new value is created (15), and the old value (10) stays unchanged in memory.
+
+
+    const answer = 42
+    answer.foo = "bar";
+    console.log(answer);  // Output: -> 42
+    console.log(answer.foo);  // Output: -> undefined
+
+
 /* Copying a reference */
 
     var x = { z: 13 }  // assign the reference of x new object to x
