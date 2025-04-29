@@ -27,6 +27,7 @@
 
 
     Summary -
+
     - Falsy values: false, 0, "", null, undefined, and NaN.
     - Truthy values: All other values that are not falsy (e.g., non-zero numbers, non-empty strings, objects, arrays).
 */
