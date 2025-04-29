@@ -10,19 +10,18 @@
         |   const  | Block Scope    | Same as let, but cannot be reassigned.                    |
 
         */
-
-        function example() {
-            if (true) {
-                var a = 10;  // Function-scoped
-                let b = 20;  // Block-scoped
-                const c = 30; // Block-scoped
+            function example() {
+                if (true) {
+                    var a = 10;  // Function-scoped
+                    let b = 20;  // Block-scoped
+                    const c = 30; // Block-scoped
+                }
+                console.log(a); // ✅ Accessible
+                console.log(b); // ❌ ReferenceError: b is not defined
+                console.log(c); // ❌ ReferenceError: c is not defined
             }
-            console.log(a); // ✅ Accessible
-            console.log(b); // ❌ ReferenceError: b is not defined
-            console.log(c); // ❌ ReferenceError: c is not defined
-        }
-        example();
-    /*
+            example();
+        /*
 
     2. Hoisting - Hoisting refers to how JavaScript moves variable declarations to the top of their scope before execution.
 
