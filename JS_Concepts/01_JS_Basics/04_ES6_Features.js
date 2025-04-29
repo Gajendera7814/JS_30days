@@ -180,5 +180,3 @@
 */
     const uniqueId = Symbol('id');
     console.log(uniqueId); // Output: Symbol(id)
-   
-
