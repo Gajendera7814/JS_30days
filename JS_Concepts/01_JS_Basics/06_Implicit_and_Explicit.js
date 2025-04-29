@@ -24,8 +24,6 @@ console.log(5 == "5"); // true (Type coercion happens)
 
 
 
-
-
 /*  
     2. Explicit or Type Conversion (Manual) - 
     
