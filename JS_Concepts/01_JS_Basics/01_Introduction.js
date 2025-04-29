@@ -55,3 +55,7 @@
     | Before execution   | a → undefined b → undefined console → reference |                                  |
     | During execution   | a = 10, b = 20                                  | Run console.log(30) and print 30 |
 */
+
+var a = 10;
+var b = 20;
+console.log(a + b); // Output: 30
