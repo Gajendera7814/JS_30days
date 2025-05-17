@@ -156,3 +156,38 @@
         - Error Handling: Pass errors to callbacks for better control in async operations.
         - Non-Blocking Execution: Keep the main thread free by running long tasks asynchronously.
     */
+
+
+    setTimeout(() => {
+        console.log("timer");
+    }, 5000);
+
+    const x = (y) => {
+        console.log("x");
+        y();
+    };
+
+    x(() => {
+        console.log("y");
+    });
+
+    /*
+        Output: 
+
+        x
+        y
+        timer (after 5sec)
+    */
+
+    /*
+
+        Problems with Callbacks
+
+        1. Callback Hell (Nested Callbacks)
+
+            - When callbacks are nested deeply, the code becomes unreadable and hard to maintain.
+
+        2. Error Handling Issues in Callbacks
+
+            - Error handling can get messy when dealing with nested callbacks.
+    */
