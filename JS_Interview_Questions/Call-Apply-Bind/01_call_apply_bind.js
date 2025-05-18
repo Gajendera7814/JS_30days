@@ -192,3 +192,35 @@ HiFun1();
     These methods are powerful tools for controlling the behaviour of functions in JavaScript and offer flexibility, code 
     reusability, and can make your code easier to read and maintain.
 */
+
+function greet(name) {
+    console.log(`Hello, ${name}! My name is ${this.name}.`);
+};
+
+let person = {
+    name: "John"
+};
+
+greet.call(person, "Alice"); // Output: Hello, Alice! My name is John.
+
+
+
+function add(a, b) {
+    return a + b;
+};
+
+let numbers = [1, 2];
+console.log(add.apply(null, numbers)); // Output: 3
+
+
+
+
+let persons = {
+    name: "John",
+    greet: function() {
+        console.log(`Hello, my name is ${this.name}.`);
+    }
+};
+
+let greetPerson = persons.greet.bind(person);
+greetPerson(); // Output: Hello, my name is John.
