@@ -11,6 +11,20 @@
     - map() creates a new array from calling a function for every array element.
     - map() does not execute the function for empty elements.
     - map() does not change the original array.
+
+
+    Map() - Transforms each element in an array and returns a new array of the same length.
+
+        How it works:
+
+            - Iterates through each item.
+            - Applies a function to each item.
+            - Returns a new array with the transformed values.
+
+        Key Notes:
+
+            - Does not modify the original array.
+            - Always returns an array of the same length as the original.
 */
 
 
@@ -49,6 +63,21 @@ function getFullName(item) {
     - The filter() method creates a new array filled with elements that pass a test provided by a function.
     - The filter() method does not execute the function for empty elements.
     - The filter() method does not change the original array.
+
+    OR 
+
+    Filter() - Filters elements based on a condition and returns a new array with only the elements that match the condition.
+
+        How it works:
+
+        - Iterates through each item.
+        - Applies a condition (predicate function).
+        - Returns a new array with only the items where the condition is true.
+
+        Key Notes:
+
+        - Returns an array with zero or more elements.
+        - Original array remains unchanged.
 */
 
 const numbersFilter = [1, 2, 3, 4];
@@ -104,6 +133,21 @@ function checkAdult(age) {
 
     The initialValue argument is optional. If provided, it will be used as the initial accumulator value in the first 
     call to the callback function.
+
+    OR 
+
+    Reduce() - Reduces the array to a single value by applying a function to each element and an accumulator.
+
+        How it works:
+
+            - Starts with an initial value (initialValue).
+            - Applies the function to each item and accumulates a result.
+            - Returns a single value (not an array).
+
+        Key Notes:
+        
+            - Can return any data type (number, object, string, array, etc.).
+            - Useful for aggregating or accumulating data.
 */
 
 const numbers = [1, 2, 3, 4];
