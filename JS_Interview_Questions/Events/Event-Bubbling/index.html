@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        
+    <style>
+        #grandParent {
+            background-color: #f8d7da;
+        }
+
+        #parent {
+            background-color: #fff3cd;
+        }
+
+        #child {
+            background-color: #d4edda;
+        }
+
+        #grandParent, #parent, #child {
+            min-width: 150px;
+            min-height: 150px;
+            padding: 30px;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        div:hover {
+            opacity: 0.9;
+        }
+    </style>
+    </head>
+
+    <body>
+        <div id="grandParent">
+            <div id="parent">
+                <div id="child"></div>
+            </div>
+        </div>
+
+        <script src="event-bubbling.js"></script>
+    </body>
+</html>

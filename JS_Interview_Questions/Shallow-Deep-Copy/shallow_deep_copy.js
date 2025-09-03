@@ -89,6 +89,8 @@ const original2 = {
 /* Creating a deep copy using JSON methods */
 const deepCopy = JSON.parse(JSON.stringify(original2));
 
+const deepC = structuredClone(original2);
+
 /* Modifying the nested object in deep copy */
 deepCopy.address.city = 'Manchester';
 

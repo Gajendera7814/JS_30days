@@ -26,7 +26,10 @@
 /* Examples based on forEach() Method - */
 
 const todos = ['Buy groceries', 'Clean the house', 'Write code'];
-todos.forEach(task => console.log(task));
+let ans = todos.forEach(task => {
+  return task
+});
+console.log(ans)
 
 /*
     Output -
