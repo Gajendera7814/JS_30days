@@ -71,3 +71,13 @@ console.log(a + b);  // Output: 30
     | Before Execution   | a → undefined, b → undefined, console → reference |                                    |
     | During Execution   | a = 10, b = 20                                    | Executes console.log(30)           |
 */
+
+var n = 2;
+
+function square (num) {
+    var ans = num * num;
+    return ans;
+}
+
+var square2 = square(n);
+var square4 = square(4);
