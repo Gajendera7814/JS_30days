@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+            background-color: #f9f9f9;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+        .log {
+            margin-top: 20px;
+            font-family: monospace;
+            background-color: #eee;
+            padding: 10px;
+            height: 150px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Debounce Example</h1>
+    <input type="text" id="search" placeholder="Type to search...">
+
+    <div class="log" id="log"></div>
+
+    <script>
+        // Debounce function
+        function debounce(func, delay) {
+            let timeoutId;
+            return function(...args) {
+                clearTimeout(timeoutId); // Clear the previous timer
+                timeoutId = setTimeout(() => {
+                    func.apply(this, args); // Call the function after delay
+                }, delay);
+            }
+        }
+
+        // Function to call on input
+        function searchQuery(e) {
+            const logDiv = document.getElementById('log');
+            const value = e.target.value;
+            logDiv.innerHTML += `Searching for: ${value} <br>`;
+            logDiv.scrollTop = logDiv.scrollHeight; // Auto scroll
+            console.log("Searching for:", value);
+        }
+
+        // Input element
+        const input = document.querySelector("#search");
+
+        // Attach debounced event listener
+        input.addEventListener("input", debounce(searchQuery, 500));
+    </script>
+    
+</body>
+</html>
