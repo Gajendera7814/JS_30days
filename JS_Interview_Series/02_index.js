@@ -1,5 +1,25 @@
 /*
     🚀 1. Problem Statement: find length of the array.
+
+    🚀 2. Problem Statement: Sort the elements of the array in ascending order.
+
+    🚀 3. Problem Statement: What result do we get when using map and filter?
+
+    🚀 4. What is the difference between slice() and splice().
+
+    🚀 5. How to clear all elements from an array?
+
+    🚀 6. How to create a new array in JavaScript.
+
+    🚀 7. Remove all duplicate elements from an array.
+
+    🚀 8. Predict the output and explain why.
+
+    🚀 9. Capitalize the first word of a string and insert a newline after it.
+*/
+
+/*
+    🚀 1. Problem Statement: find length of the array.
 */
 
 let arr1 = [, , ,];
